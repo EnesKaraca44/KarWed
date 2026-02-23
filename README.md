@@ -1,90 +1,75 @@
 <div align="center">
   
-# 💒 KarWed | Profesyonel Düğün Salonu Yönetim Sistemi
+# 💒 KarWed | İnteraktif Düğün & Etkinlik Fotoğraf Paylaşım Platformu (SaaS)
 
 [![.NET](https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white)](https://dotnet.microsoft.com/)
 [![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white)](https://learn.microsoft.com/en-us/dotnet/csharp/)
-[![MVC](https://img.shields.io/badge/MVC-0078D4?style=for-the-badge&logo=microsoft&logoColor=white)]()
+[![SignalR](https://img.shields.io/badge/SignalR-0078D4?style=for-the-badge&logo=microsoft&logoColor=white)]()
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
-**Düğün ve etkinlik mekanları için tasarlanmış, kapsamlı, modern ve kullanıcı dostu bir SaaS çözümüdür.**
-KarWed ile rezervasyonları yönetin, finansal takibinizi yapın ve müşteri ilişkilerinizi bir üst seviyeye taşıyın.
+**Düğünlerde misafirlerin anlık olarak fotoğraf ve mesaj yüklemesine, bu anıların dev ekranda canlı (canlı slayt gösterisi) olarak yayınlanmasına olanak tanıyan yeni nesil etkinlik etkileşim platformudur.** 📸✨
 
+</br>
 </div>
 
 ---
 
-## ✨ Özellikler
+## 🎯 Projenin Amacı (Nedir?)
 
-- **📅 Akıllı Rezervasyon Yönetimi:** Tarih çakışmalarını önleyen takvim entegrasyonu.
-- **💰 Finansal Takip:** Gelişmiş gelir/gider tabloları ve otomatik makbuz oluşturma.
-- **🛡️ Güvenli Altyapı:** Kimlik doğrulama, yetkilendirme ve rol yönetimi (Admin/Personel).
-- **📱 Responsive Tasarım:** Tüm cihazlarda (Mobil, Tablet, Masaüstü) kusursuz görünüm.
-- **📊 Gelişmiş Raporlama:** SP (Stored Procedure) destekli, özelleştirilebilir yazdırma düzenine sahip detaylı raporlar.
+KarWed klasik, sıkıcı düğün salonu yönetim sistemlerinden **farklıdır.** Bu proje, düğün sahipleri ve misafirleri bir araya getiren interaktif bir **SaaS (Hizmet Olarak Yazılım)** platformudur. 
+
+**Nasıl Çalışır?**
+1. **QR Kod ile Katılım:** Misafirler masalarındaki QR kodu okutarak uygulamaya bağlanır (Uygulama indirmeye gerek yoktur).
+2. **Anlık Yükleme:** Kameralarından çektikleri fotoğrafları veya iyi dilek mesajlarını sisteme yüklerler.
+3. **Canlı Slayt (Slideshow):** Yüklenen içerikler eşzamanlı olarak (SignalR ile) düğün salonundaki dev ekrana düşer.
+4. **Moderasyon:** İstenmeyen mesajlar veya fotoğraflar admin panelinden saniyeler içinde onaylanabilir veya reddedilebilir.
+
+## ✨ Temel Özellikler
+
+- **⚡ Gerçek Zamanlı Slayt Gösterisi:** SignalR teknolojisi ile sayfayı yenilemeden anlık fotoğraf/mesaj düşmesi.
+- **� Ziyaretçi Deneyimi (Guest Flow):** Misafirlerin kolayca fotoğraf ve mesaj atabileceği, hiçbir kurulum gerektirmeyen mobil uyumlu arayüz.
+- **🛡️ İçerik Moderasyonu:** Admin panelinden gelen fotoğrafların ekrana yansımadan önce onaylanıp (Approve) reddedilebilmesi.
+- **� B2B & White Label (Düğün Salonları İçin):** Düğün mekanlarının kendi logoları, isimleri ve marka renkleriyle (ThemeColor) sistemi müşterilerine sunabileceği "Salon Business" mimarisi.
+- **� Çoklu Katmanlı Abonelik (SaaS Seçenekleri):** Free, Plus, Pro ve SalonBusiness gibi farklı abonelik katmanları.
+- **💳 Online Ödeme Entegrasyonu:** (Ödeme altyapısı hazırlğı).
 
 ## 🚀 Teknolojik Altyapı
 
-Proje, modern ve ölçeklenebilir teknolojiler kullanılarak geliştirilmiştir:
-
 - **Backend:** C# & .NET Core MVC
-- **Veritabanı:** MS SQL Server / SQLite (Entity Framework Core)
-- **Güvenlik:** ASP.NET Core Identity
-- **Frontend / Arayüz:** HTML5, CSS3, JavaScript
-- **Mimari:** Model-View-Controller (MVC) Tasarım Deseni
+- **Gerçek Zamanlı İletişim (WebSockets):** ASP.NET Core SignalR (`SlideshowHub`, `AdminHub`)
+- **Veritabanı:** MS SQL Server / Entity Framework Core
+- **Güvenlik & Yetkilendirme:** ASP.NET Core Identity (Google OAuth login desteği ile)
+- **Frontend:** HTML5, CSS3, JavaScript (Responsive tasarım)
 
-## 📂 Proje Yapısı
+## 📂 Kod Mimarisi
 
-```bash
-📦 KarWed
-├── 📁 Controllers    # İş mantığı ve yönlendirmeleri yöneten sınıflar
-├── 📁 Models         # Veritabanı tabloları ve iş nesneleri
-├── 📁 ViewModels     # View'lara veri taşıyan özel modeller (Örn: RaporViewModel)
-├── 📁 Views          # Kullanıcı arayüzü dosyaları (.cshtml)
-├── 📁 Data           # Veritabanı bağlamı (DbContext) ve Data Provider'lar
-├── 📁 Migrations     # Entity Framework veritabanı şema güncellemeleri
-├── 📁 Services       # Dış servisler ve API entegrasyonları
-├── 📁 Hubs           # SignalR bağlantı noktaları (Gerçek zamanlı işlemler için)
-└── 📁 wwwroot        # CSS, JS, Görüntüler ve kütüphaneler (Statik dosyalar)
-```
+- **`Models/WeddingEvent.cs`:** Çift bilgileri, etkinlik tarihi, salon ID'si, tema rengi ve B2B abonelik tiplerini tutan ana model.
+- **`Models/GuestEntry.cs`:** Misafirlerden gelen fotoğraflar, mesajlar ve "onaylandı (IsApproved)" moderasyon bilgisini taşıyan model.
+- **`Hubs/`:** Ekranların güncellenmesini sağlayan gerçek zamanlı SignalR hub'ları.
+- **`Controllers/GuestController.cs`:** Misafirlerin dışarıdan sisteme veri yollamasını sağlayan endpoint'ler.
+- **`Controllers/SlideshowController.cs`:** Salondaki dev yansıtma ekranı mantığını yöneten sınıf.
 
-## 🛠️ Kurulum İşlemleri
+## 🛠️ Geliştirici Kurulumu
 
-Projeyi yerel ortamınızda (localhost) çalıştırmak için aşağıdaki adımları izleyin:
-
-### Gereksinimler
-- [.NET SDK](https://dotnet.microsoft.com/download) (En güncel sürüm önerilir)
-- IDE (Visual Studio, VS Code veya JetBrains Rider)
-- SQL Server (Eğer MS SQL kullanılacaksa)
-
-### Adımlar
-
-1. Projeyi bilgisayarınıza klonlayın:
+1. Projeyi klonlayın:
    ```bash
    git clone https://github.com/EnesKaraca44/KarWed.git
    ```
-2. Proje dizinine gidin:
-   ```bash
-   cd KarWed
-   ```
-3. Gerekli bağımlılıkları yükleyin:
+2. Bağımlılıkları yükleyin:
    ```bash
    dotnet restore
    ```
-4. `appsettings.json` dosyasını açarak `DefaultConnection` adımını kendi veritabanı ayarlarınıza göre yapılandırın.
-
-5. Veritabanını oluşturun ve migration'ları uygulayın:
+3. `appsettings.json` içerisinden veritabanı bağlantınızı (Connection String) ayarlayın.
+4. Veritabanını oluşturun:
    ```bash
    dotnet ef database update
    ```
-6. Projeyi başlatın:
+5. Projeyi başlatın:
    ```bash
    dotnet run
    ```
 
-## 👨‍💻 Geliştirici
+## 👨‍💻 Geliştirme ve İletişim
 
 **Enes Karaca**
 - GitHub: [@EnesKaraca44](https://github.com/EnesKaraca44)
-
----
-*Bu proje, etkinlik mekanı yönetimi süreçlerini dijitalleştirmek ve kolaylaştırmak amacıyla geliştirilmiştir.*
