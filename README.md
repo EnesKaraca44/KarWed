@@ -39,7 +39,7 @@ KarWed klasik, sıkıcı düğün salonu yönetim sistemlerinden **farklıdır.*
 - **Gerçek Zamanlı İletişim (WebSockets):** ASP.NET Core SignalR (`SlideshowHub`, `AdminHub`)
 - **Veritabanı:** MS SQL Server / Entity Framework Core
 - **Güvenlik & Yetkilendirme:** ASP.NET Core Identity (Google OAuth login desteği ile)
-- **Frontend:** HTML5, CSS3, JavaScript (Responsive tasarım)
+- **Frontend:** Modern Responsive UI (Razor Views, CSS3, JavaScript)
 
 ## 📂 Kod Mimarisi
 
